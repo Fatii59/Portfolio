@@ -6,19 +6,176 @@ Source: https://sketchfab.com/3d-models/floating-island-of-the-potion-brewer-555
 Title: Floating Island of the Potion Brewer
 */
 import { a } from "@react-spring/three";
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect} from 'react'
 import { useGLTF } from '@react-three/drei'
 import {useFrame, useThree} from '@react-three/fiber'
 
 
 import islandScene from '../assets/3d/floating_island_of_the_potion_brewer.glb'
 
-const Island = (props) => {
-
+export default function Island({
+  isRotating,
+  setIsRotating,
+  setCurrentStage,
+  ...props
+}) {
   const islandRef = useRef();
+  const { gl, viewport } = useThree();
+  const { nodes, materials } = useGLTF(islandScene);
 
-  const { nodes, materials } = useGLTF(islandScene)
- 
+  const lastX = useRef(0);
+  const rotationSpeed = useRef(0);
+  const dampingFactor = 0.95;
+
+
+  // Handle pointer (mouse or touch) down event
+  const handlePointerDown = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    setIsRotating(true);
+
+    // Calculate the clientX based on whether it's a touch event or a mouse event
+    const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+
+    // Store the current clientX position for reference
+    lastX.current = clientX;
+  };
+
+  // Handle pointer (mouse or touch) up event
+  const handlePointerUp = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    setIsRotating(false);
+  };
+
+  // Handle pointer (mouse or touch) move event
+  const handlePointerMove = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    if (isRotating) {
+      // If rotation is enabled, calculate the change in clientX position
+      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+
+      // calculate the change in the horizontal position of the mouse cursor or touch input,
+      // relative to the viewport's width
+      const delta = (clientX - lastX.current) / viewport.width;
+
+      // Update the island's rotation based on the mouse/touch movement
+      islandRef.current.rotation.y += delta * 0.7* Math.PI;
+
+      // Update the reference for the last clientX position
+      lastX.current = clientX;
+
+      // Update the rotation speed
+      rotationSpeed.current = delta * 0.7 * Math.PI;
+    }
+  };
+
+  // Handle keydown events
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowLeft") {
+      if (!isRotating) setIsRotating(true);
+
+      islandRef.current.rotation.y += 0.01 * Math.PI;
+      rotationSpeed.current = 0.01;
+    } else if (event.key === "ArrowRight") {
+      if (!isRotating) setIsRotating(true);
+
+      islandRef.current.rotation.y -= 0.01 * Math.PI;
+      rotationSpeed.current = -0.01;
+    }
+  };
+
+  // Handle keyup events
+  const handleKeyUp = (event) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      setIsRotating(false);
+    }
+  };
+
+  // Touch events for mobile devices
+  const handleTouchStart = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setIsRotating(true);
+  
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    lastX.current = clientX;
+  }
+  
+  const handleTouchEnd = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setIsRotating(false);
+  }
+  
+  const handleTouchMove = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+  
+    if (isRotating) {
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const delta = (clientX - lastX.current) / viewport.width;
+  
+      islandRef.current.rotation.y += delta * 0.01 * Math.PI;
+      lastX.current = clientX;
+      rotationSpeed.current = delta * 0.01 * Math.PI;
+    }
+  }
+
+
+  useEffect(() => {
+    const canvas = gl.domElement;
+    canvas.addEventListener("pointerdown", handlePointerDown);
+    canvas.addEventListener("pointerup", handlePointerUp);
+    canvas.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+    canvas.addEventListener("touchstart", handleTouchStart);
+    canvas.addEventListener("touchend", handleTouchEnd);
+    canvas.addEventListener("touchmove", handleTouchMove);
+    return () => {
+      canvas.removeEventListener("pointerdown", handlePointerDown);
+      canvas.removeEventListener("pointerup", handlePointerUp);
+      canvas.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+      canvas.removeEventListener("touchstart", handleTouchStart);
+      canvas.removeEventListener("touchend", handleTouchEnd);
+      canvas.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
+
+  // This function is called on each frame update
+  useFrame(() => {
+    // Always apply damping
+    if (!isRotating) {
+      rotationSpeed.current *= dampingFactor;
+  
+      if (Math.abs(rotationSpeed.current) < 0.001) {
+        rotationSpeed.current = 0;
+      }
+  
+      islandRef.current.rotation.y += rotationSpeed.current;
+    }
+  
+    // Always detect stage based on rotation
+    const rotation = islandRef.current.rotation.y;
+    const normalizedRotation =
+      ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+  
+    if ((normalizedRotation >= 0 && normalizedRotation < Math.PI / 2)) {
+      setCurrentStage(1);
+    } else if (normalizedRotation >= Math.PI / 2 && normalizedRotation < Math.PI) {
+      setCurrentStage(2);
+    } else if (normalizedRotation >= Math.PI && normalizedRotation < (3 * Math.PI) / 2) {
+      setCurrentStage(3);
+    } else {
+      setCurrentStage(4);
+    }
+  });
+  
+
   return (
     <a.group ref={islandRef} {...props}>
       <group position={[-85.271, -858.185, 387.906]} rotation={[-Math.PI / 2, 0, 0]}>
@@ -581,6 +738,3 @@ const Island = (props) => {
     </a.group>
   );
 }
-
-
-export default Island;

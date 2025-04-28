@@ -1,24 +1,36 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
-const Navbar = () => 
-    {
-        return(
-            <header>
-                <NavLink to="/" className="w-10 h-10 rounded-lg bg-white items-center justifiy-center flex font-bold shadow-md">
-                    <p  className="blue-gradient_text">AH</p>
-                </NavLink>
+const Navbar = () => {
+  return (
+    <header className="flex items-center justify-between p-4 bg-[#E0FFFF] bg-opacity-30 backdrop-blur-md shadow-md">
+      {/* Logo / Home Link */}
+      <NavLink to="/" className="w-12 h-12 rounded-full bg-white flex items-center justify-center font-bold shadow-md">
+        <p className="blue-gradient_text text-xl">AH</p>
+      </NavLink>
 
-                <nav className="flex text-lg gap-7 font-medium">
-                    <NavLink to="/about" className= {(isActive) => isActive? 'text-blue-500' : 'text-black'}>
-                        About
-                    </NavLink>
-                    <NavLink to="/projects" className= {(isActive) => isActive? 'text-blue-500' : 'text-black'}>
-                        Projects
-                    </NavLink>
+      {/* Navigation Links */}
+      <nav className="flex gap-7 text-lg font-medium text-black">
+        <NavLink
+          to="/about"
+          className={({ isActive }) => (isActive ? 'text-yellow-50' : 'text-black hover:text-yellow-100')}
+        >
+          About
+        </NavLink>
+        <NavLink
+          to="/projects"
+          className={({ isActive }) => (isActive ? 'text-yellow-50' : 'text-black hover:text-yellow-100')}
+        >
+          Projects
+        </NavLink>
+        <NavLink
+          to="/contact"
+          className={({ isActive }) => (isActive ? 'text-yellow-50' : 'text-black hover:text-yellow-100')}
+        >
+          Contact
+        </NavLink>
+      </nav>
+    </header>
+  );
+};
 
-                </nav>
-            </header>
-        )
-
-    }
-export default Navbar
+export default Navbar;
