@@ -4,7 +4,7 @@ import { arrow } from "../assets/icons";
 const HomeInfo = ({ currentStage }) => {
   if (currentStage === 1)
     return (
-      <h1 className='sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5'>
+      <h1 className='sm:text-lg sm:leading-snug text-center neo-brutalism-blue py-2 px-4 text-white mx-2'>
         Hi, I'm
         <span className='font-semibold mx-2 text-white'>Fatoma Hersi</span>
         👋
@@ -15,14 +15,13 @@ const HomeInfo = ({ currentStage }) => {
 
   if (currentStage === 2) {
     return (
-      <div className='info-box'>
-        <p className='font-medium sm:text-xl text-center'>
-          I've built several projects and I'm always learning and improving.
+      <div className='neo-brutalism-blue text-white py-2 px-4 mx-2 text-center rounded-md shadow-md'>
+        <p className='sm:text-lg text-sm mb-4'>
+          Passionate about coding, problem-solving, and real-world impact!
         </p>
-
-        <Link to='/about' className='neo-brutalism-white neo-btn'>
+        <Link to='/about' className='neo-brutalism-white neo-btn text-xs px-1.5 py-0.5'>
           More about me
-          <img src={arrow} alt='arrow' className='w-4 h-4 object-contain' />
+          <img src={arrow} alt='arrow' className='w-2.5 h-2.5 object-contain ml-0.5' />
         </Link>
       </div>
     );
@@ -30,14 +29,13 @@ const HomeInfo = ({ currentStage }) => {
 
   if (currentStage === 3) {
     return (
-      <div className='info-box'>
-        <p className='font-medium text-center sm:text-xl'>
-          Passionate about coding, problem-solving, and real-world impact!
+      <div className='neo-brutalism-blue text-white py-2 px-4 mx-2 text-center rounded-md shadow-md'>
+        <p className='sm:text-lg text-sm mb-4'>
+          I've built several projects and I'm always learning and improving.
         </p>
-
-        <Link to='/projects' className='neo-brutalism-white neo-btn'>
-          See my work
-          <img src={arrow} alt='arrow' className='w-4 h-4 object-contain' />
+        <Link to='/projects' className='neo-brutalism-white neo-btn text-xs px-1.5 py-0.5'>
+          See my portofolio
+          <img src={arrow} alt='arrow' className='w-2.5 h-2.5 object-contain ml-0.5' />
         </Link>
       </div>
     );
@@ -45,15 +43,15 @@ const HomeInfo = ({ currentStage }) => {
 
   if (currentStage === 4) {
     return (
-      <div className='info-box'>
-        <p className='font-medium sm:text-xl text-center'>
+      <div className='neo-brutalism-blue text-white py-2 px-4 mx-2 text-center rounded-md shadow-md'>
+        <p className='sm:text-lg text-sm mb-4'>
           Let's connect — I'm open to internship opportunities!
         </p>
-
-        <Link to='/contact' className='neo-brutalism-white neo-btn'>
-          Get in touch
-          <img src={arrow} alt='arrow' className='w-4 h-4 object-contain' />
+        <Link to='/contact' className='neo-brutalism-white neo-btn text-xs px-1.5 py-0.5'>
+            Get in touch
+        <img src={arrow} alt='arrow' className='w-2.5 h-2.5 object-contain ml-0.5' />
         </Link>
+
       </div>
     );
   }

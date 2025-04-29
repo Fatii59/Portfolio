@@ -5,7 +5,7 @@ const Navbar = () => {
     <header className="flex items-center justify-between p-4 bg-[#E0FFFF] bg-opacity-30 backdrop-blur-md shadow-md">
       {/* Logo / Home Link */}
       <NavLink to="/" className="w-12 h-12 rounded-full bg-white flex items-center justify-center font-bold shadow-md">
-        <p className="blue-gradient_text text-xl">AH</p>
+        <p className="blue-gradient_text text-xl">FH</p>
       </NavLink>
 
       {/* Navigation Links */}

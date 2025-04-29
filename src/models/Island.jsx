@@ -5,7 +5,7 @@ License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 Source: https://sketchfab.com/3d-models/floating-island-of-the-potion-brewer-555992efd5c74cf299f5a3ab4acd0a3b
 Title: Floating Island of the Potion Brewer
 */
-import { a } from "@react-spring/three";
+import {a} from "@react-spring/three";
 import { useRef, useEffect} from 'react'
 import { useGLTF } from '@react-three/drei'
 import {useFrame, useThree} from '@react-three/fiber'
@@ -77,12 +77,12 @@ export default function Island({
       if (!isRotating) setIsRotating(true);
 
       islandRef.current.rotation.y += 0.01 * Math.PI;
-      rotationSpeed.current = 0.01;
+      rotationSpeed.current = 0.009;
     } else if (event.key === "ArrowRight") {
       if (!isRotating) setIsRotating(true);
 
       islandRef.current.rotation.y -= 0.01 * Math.PI;
-      rotationSpeed.current = -0.01;
+      rotationSpeed.current = -0.009;
     }
   };
 

@@ -41,7 +41,7 @@ const Home = () => {
   
     return [screenScale, screenPosition];
 
-    skal være efter islan::
+    skal være efter island:
 
         <Plane
             isRotating ={isRotating}
@@ -59,7 +59,7 @@ const Home = () => {
     <section className="w-full h-screen relative">
 
       <div className="absolute top-10 left-3 right-0 z-10 flex items-center justify-center">
-        {currentStage === 1 && <HomeInfo currentStage={currentStage}/>}
+      <HomeInfo currentStage={currentStage} />
       </div>
       <Canvas
         className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
