@@ -1,6 +1,6 @@
 # Portofolio
 
-# 3D Developer Portfolio — React + Three.js
+# 3D Portfolio — React + Three.js
 
 Hi there! I'm **Fatoma Hersi**, a Software Engineering student passionate about building interactive and visually engaging web experiences. This portfolio was built to showcase my work and skills as I actively look for an **internship opportunity**.
 
