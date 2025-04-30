@@ -10,9 +10,9 @@ const Bird = () => {
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
 
   // Set your fly range (FARTHER from island)
-  const startX = -150;   // Start far left
-  const endX = 150;      // End far right
-  const flightHeight = 50; // Bird flying height ABOVE the island
+  const startX = -400;   // Start far left
+  const endX = 400;      // End far right
+  const flightHeight = 30; // Bird flying height ABOVE the island
   const zOffset = -50;   // Slight z offset for 3D feeling (optional)
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Bird = () => {
     birdRef.current.position.y = flightHeight + Math.sin(clock.elapsedTime * 2) * 2;
 
     // Move bird along X axis
-    birdRef.current.position.x += direction * 0.5; // << much faster than before (0.5 instead of 0.05)
+    birdRef.current.position.x += direction * 0.7; // << much faster than before (0.5 instead of 0.05)
 
     // Change direction when reaching the edges
     if (birdRef.current.position.x > endX) {
@@ -45,7 +45,7 @@ const Bird = () => {
   });
 
   return (
-    <mesh scale={[0.05, 0.05, 0.05]} ref={birdRef}>
+    <mesh scale={[0.1, 0.1, 0.1]} ref={birdRef}>
       <primitive object={scene} />
     </mesh>
   );

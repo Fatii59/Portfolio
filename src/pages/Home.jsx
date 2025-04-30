@@ -12,6 +12,7 @@ const Home = () => {
 
     const[isRotating, setIsRotating] =useState(false);
     const [currentStage, setCurrentStage] = useState(1);
+
   
     const adjustIslandForScreenSize = () => {
    
@@ -58,16 +59,17 @@ const Home = () => {
   return (
     <section className="w-full h-screen relative">
 
-      <div className="absolute top-10 left-3 right-0 z-10 flex items-center justify-center">
-      <HomeInfo currentStage={currentStage} />
-      </div>
+<div className="absolute top-16 lg:top-10 left-3 right-0 z-10 flex items-center justify-center">
+  <HomeInfo currentStage={currentStage} />
+</div>
+
       <Canvas
         className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{
           position: [0, 0, 275],
           fov: 45,
           near: 0.1,
-          far: 400,
+          far: 1000,
         }}
       >
         {/* Add orbit controls with zoom constraints */}
@@ -75,8 +77,8 @@ const Home = () => {
           enablePan={true}
           enableZoom={true}
           enableRotate={true}
-          minDistance={100} // Keeps you from zooming too close
-          maxDistance={280} // Increased maxDistance to allow for more zooming out
+          minDistance={270} // Keeps you from zooming too close
+          maxDistance={300} // Increased maxDistance to allow for more zooming out
         />
 
         <Suspense fallback={<Loader />}>
@@ -86,7 +88,7 @@ const Home = () => {
           <hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={0.5} />
 
           <Bird/>
-          <Sky/>
+          <Sky isRotating={isRotating} />
           <Island
             position={islandPosition}
             scale={islandScale}

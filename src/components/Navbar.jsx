@@ -2,32 +2,27 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className="flex items-center justify-between p-4 bg-[#E0FFFF] bg-opacity-30 backdrop-blur-md shadow-md">
-      {/* Logo / Home Link */}
+    <header className="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-transparent shadow-none z-50">
+      {/* Logo */}
       <NavLink to="/" className="w-12 h-12 rounded-full bg-white flex items-center justify-center font-bold shadow-md">
         <p className="blue-gradient_text text-xl">FH</p>
       </NavLink>
 
-      {/* Navigation Links */}
+      {/* Links */}
       <nav className="flex gap-7 text-lg font-medium text-black">
-        <NavLink
-          to="/about"
-          className={({ isActive }) => (isActive ? 'text-yellow-50' : 'text-black hover:text-yellow-100')}
-        >
-          About
-        </NavLink>
-        <NavLink
-          to="/projects"
-          className={({ isActive }) => (isActive ? 'text-yellow-50' : 'text-black hover:text-yellow-100')}
-        >
-          Projects
-        </NavLink>
-        <NavLink
-          to="/contact"
-          className={({ isActive }) => (isActive ? 'text-yellow-50' : 'text-black hover:text-yellow-100')}
-        >
-          Contact
-        </NavLink>
+        {["about", "projects", "contact"].map((path) => (
+          <NavLink
+            key={path}
+            to={`/${path}`}
+            className={({ isActive }) =>
+              isActive
+                ? "text-black underline"
+                : "hover:text-gray-800 transition-colors duration-300"
+            }
+          >
+            {path.charAt(0).toUpperCase() + path.slice(1)}
+          </NavLink>
+        ))}
       </nav>
     </header>
   );
