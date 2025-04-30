@@ -2,7 +2,7 @@ import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useRef, useState } from "react";
 
-import {Fox} from "../models/Fox";
+import { Fox } from "../models/Fox";
 import useAlert from "../hooks/useAlert";
 import Alert from "../components/Alert";
 import Loader from "../components/Loader";
@@ -76,21 +76,21 @@ const Contact = () => {
     <section className='relative flex lg:flex-row flex-col max-container'>
       {alert.show && <Alert {...alert} />}
 
-      <div className='flex-1 min-w-[50%] flex flex-col'>
-        <h1 className='head-text'>Get in Touch</h1>
+      <div className='flex-1 min-w-[45%] flex flex-col'>
+        <h1 className='text-lg font-semibold'>Get in Touch</h1>
 
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className='w-full flex flex-col gap-7 mt-14'
+          className='w-full flex flex-col gap-5 mt-10'
         >
-          <label className='text-black-500 font-semibold'>
+          <label className='text-black-500 font-semibold text-sm'>
             Name
             <input
               type='text'
               name='name'
-              className='input'
-              placeholder='John'
+              className='input text-sm'
+              placeholder='Your name'
               required
               value={form.name}
               onChange={handleChange}
@@ -98,13 +98,13 @@ const Contact = () => {
               onBlur={handleBlur}
             />
           </label>
-          <label className='text-black-500 font-semibold'>
+          <label className='text-black-500 font-semibold text-sm'>
             Email
             <input
               type='email'
               name='email'
-              className='input'
-              placeholder='John@gmail.com'
+              className='input text-sm'
+              placeholder='Your email'
               required
               value={form.email}
               onChange={handleChange}
@@ -112,13 +112,13 @@ const Contact = () => {
               onBlur={handleBlur}
             />
           </label>
-          <label className='text-black-500 font-semibold'>
+          <label className='text-black-500 font-semibold text-sm'>
             Your Message
             <textarea
               name='message'
-              rows='4'
-              className='textarea'
-              placeholder='Write your thoughts here...'
+              rows='3'
+              className='textarea text-sm'
+              placeholder='Your message...'
               value={form.message}
               onChange={handleChange}
               onFocus={handleFocus}
@@ -129,7 +129,7 @@ const Contact = () => {
           <button
             type='submit'
             disabled={loading}
-            className='btn'
+            className='btn text-sm'
             onFocus={handleFocus}
             onBlur={handleBlur}
           >
@@ -138,7 +138,7 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
+      <div className='lg:w-1/2 w-full lg:h-auto md:h-[450px] h-[280px]'>
         <Canvas
           camera={{
             position: [0, 0, 5],
@@ -158,11 +158,11 @@ const Contact = () => {
           />
 
           <Suspense fallback={<Loader />}>
-            <Fox
+          <Fox
               currentAnimation={currentAnimation}
               position={[0.5, 0.35, 0]}
               rotation={[12.629, -0.6, 0]}
-              scale={[0.5, 0.5, 0.5]}
+              scale={[0.6, 0.6, 0.6]}
             />
           </Suspense>
         </Canvas>
