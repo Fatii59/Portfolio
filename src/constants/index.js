@@ -15,7 +15,10 @@ import {
     docker,
     kubernetes,
     postgresql,
-    springboot
+    springboot, 
+    pricewise,
+    portfolio,
+    construction
 } from "../assets/icons";
 
 export const skills = [
@@ -122,7 +125,7 @@ export const experiences = [
         title: "BS Software Engineering",
         company_name: "VIA University College",
         icon: VIA,
-        iconBg: "#fbc3bc",
+        iconBg: "#dbdbdb",
         date: "Aug 2023 - now",
         points: [
             "Developed full-stack applications using technologies like React, .NET/C#, and Spring Boot",
@@ -142,58 +145,35 @@ export const socialLinks = [
     {
         name: 'GitHub',
         iconUrl: github,
-        link: 'https://github.com/YourGitHubUsername',
+        link: 'https://github.com/Fatii59',
     },
     {
         name: 'LinkedIn',
         iconUrl: linkedin,
-        link: 'https://www.linkedin.com/in/YourLinkedInUsername',
+        link: 'https://www.linkedin.com/in/fatoma-hersi-b278782a4',
     }
 ];
 
-/*
 export const projects = [
     {
         iconUrl: pricewise,
         theme: 'btn-back-red',
-        name: 'Amazon Price Tracker',
-        description: 'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
-        link: 'https://github.com/adrianhajdin/pricewise',
+        name: 'Thrifting Platform',
+        description: 'Developed a web application that allows users to buy and sell second-hand items, providing a way to trade pre-owned goods.',
+        link: 'https://github.com/Fatii59/SEP3',
     },
     {
-        iconUrl: threads,
-        theme: 'btn-back-green',
-        name: 'Full Stack Threads Clone',
-        description: 'Created a full-stack replica of the popular discussion platform "Threads," enabling users to post and engage in threaded conversations.',
-        link: 'https://github.com/adrianhajdin/threads',
-    },
-    {
-        iconUrl: car,
+        iconUrl: construction,
         theme: 'btn-back-blue',
-        name: 'Car Finding App',
-        description: 'Designed and built a mobile app for finding and comparing cars on the market, streamlining the car-buying process.',
-        link: 'https://github.com/adrianhajdin/project_next13_car_showcase',
+        name: 'Project Management',
+        description: 'Designed and built a system and website for a construction firm. The system tracks project progress, while the website showcases services.',
+        link: 'https://github.com/Fatii59/sep1gruppe7-main',
     },
     {
-        iconUrl: snapgram,
+        iconUrl: portfolio,
         theme: 'btn-back-pink',
-        name: 'Full Stack Instagram Clone',
-        description: 'Built a complete clone of Instagram, allowing users to share photos and connect with friends in a familiar social media environment.',
-        link: 'https://github.com/adrianhajdin/social_media_app',
+        name: 'Portfolio',
+        description: 'Created an interactive portfolio featuring 3D models to showcase my work and provide a unique, engaging experience for visitors.',
+        link: 'https://github.com/Fatii59/Portfolio',
     },
-    {
-        iconUrl: estate,
-        theme: 'btn-back-black',
-        name: 'Real-Estate Application',
-        description: 'Developed a web application for real estate listings, facilitating property searches and connecting buyers with sellers.',
-        link: 'https://github.com/adrianhajdin/projects_realestate',
-    },
-    {
-        iconUrl: summiz,
-        theme: 'btn-back-yellow',
-        name: 'AI Summarizer Application',
-        description: 'App that leverages AI to automatically generate concise & informative summaries from lengthy text content, or blogs.',
-        link: 'https://github.com/adrianhajdin/project_ai_summarizer',
-    }
 ];
-*/
