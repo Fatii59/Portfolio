@@ -17,6 +17,9 @@ import docker from './docker.svg'
 import kubernetes from './kubernetes.svg'
 import java from './java.svg'
 import csharp from './c-sharp.svg'
+import construction from './construction.svg'
+import portfolio from './portfolio.svg'
+import pricewise from './pricewise.svg'
 
 export {
     css,
@@ -37,5 +40,8 @@ export {
     docker,
     kubernetes,
     java, 
-    csharp
+    csharp, 
+    pricewise,
+    construction,
+    portfolio
 }
