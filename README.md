@@ -10,7 +10,7 @@ This site is a 3D experience built with **React** and **Three.js**, designed to 
 
 ## Live Demo
 
-🔗 [Check out the live portfolio here!](https://portofolio.vercel.app)  
+🔗 [Check out the live portfolio here!](https://fatii59.github.io/Portfolio/)  
 
 ---
 
