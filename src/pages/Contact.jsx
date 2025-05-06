@@ -25,7 +25,7 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     setCurrentAnimation("hit");
-    axios.post("http://167.172.46.28:80/send-email", {
+    axios.post("https://fatiportfolio.dk/send-email", {
       name: form.name,
       email: form.email,
       message: form.message,
